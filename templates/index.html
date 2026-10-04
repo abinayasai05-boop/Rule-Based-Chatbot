@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rule-Based TSA Chatbot</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🤖</div>
+
+            <div>
+                <h2>TSA Bot</h2>
+                <span>Rule-Based NLP</span>
+            </div>
+        </div>
+
+        <button class="new-chat" onclick="clearChat()">
+            ＋ New Conversation
+        </button>
+
+        <div class="sidebar-section">
+
+            <p class="section-title">QUICK QUESTIONS</p>
+
+            <button class="suggestion"
+                    onclick="useSuggestion('What is NLP?')">
+                🧠 What is NLP?
+            </button>
+
+            <button class="suggestion"
+                    onclick="useSuggestion('What is a chatbot?')">
+                🤖 What is a chatbot?
+            </button>
+
+            <button class="suggestion"
+                    onclick="useSuggestion('What is sentiment analysis?')">
+                📊 Sentiment Analysis
+            </button>
+
+            <button class="suggestion"
+                    onclick="useSuggestion('What is TSA?')">
+                📚 What is TSA?
+            </button>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+
+            <div class="technology">
+                Python • Flask • Rule Engine
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div>
+
+                <div class="badge">
+                    ✦ TEXT & SPEECH ANALYSIS
+                </div>
+
+                <h1>Rule-Based Chatbot</h1>
+
+                <p>
+                    Analyze text and interact using predefined NLP rules.
+                </p>
+
+            </div>
+
+            <div class="header-status">
+                <span class="status-dot"></span>
+                Online
+            </div>
+
+        </header>
+
+
+        <!-- CHAT -->
+
+        <section class="chat-area" id="chatArea">
+
+            <div class="welcome">
+
+                <div class="welcome-icon">
+                    🤖
+                </div>
+
+                <h2>Hello! I'm TSA Bot 👋</h2>
+
+                <p>
+                    I'm a rule-based NLP chatbot. Ask me something,
+                    and I'll analyze your text and respond using
+                    predefined rules.
+                </p>
+
+                <div class="welcome-cards">
+
+                    <button onclick="useSuggestion('Hello')">
+                        <span>👋</span>
+                        <strong>Say Hello</strong>
+                        <small>Test greeting rules</small>
+                    </button>
+
+                    <button onclick="useSuggestion('What is NLP?')">
+                        <span>🧠</span>
+                        <strong>Ask about NLP</strong>
+                        <small>Test knowledge rules</small>
+                    </button>
+
+                    <button onclick="useSuggestion('I am very happy today')">
+                        <span>😊</span>
+                        <strong>Test Sentiment</strong>
+                        <small>Analyze your emotion</small>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ANALYSIS -->
+
+        <section class="analysis-panel">
+
+            <div class="analysis-header">
+
+                <div>
+                    <span class="analysis-icon">📊</span>
+                    <strong>Text Analysis</strong>
+                </div>
+
+                <span id="analysisStatus">
+                    Waiting for input
+                </span>
+
+            </div>
+
+            <div class="analysis-grid">
+
+                <div class="stat">
+                    <span>Words</span>
+                    <strong id="words">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Characters</span>
+                    <strong id="characters">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Sentences</span>
+                    <strong id="sentences">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Vowels</span>
+                    <strong id="vowels">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Consonants</span>
+                    <strong id="consonants">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Sentiment</span>
+                    <strong id="sentiment">—</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Intent</span>
+                    <strong id="intent">—</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Confidence</span>
+                    <strong id="confidence">—</strong>
+                </div>
+
+            </div>
+
+            <div class="keyword-row">
+
+                <span>Keywords:</span>
+
+                <div id="keywords">
+                    <span class="keyword-empty">None</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INPUT -->
+
+        <footer class="input-area">
+
+            <div class="input-wrapper">
+
+                <textarea
+                    id="messageInput"
+                    placeholder="Type your message here..."
+                    rows="1"
+                    onkeydown="handleKey(event)"
+                ></textarea>
+
+                <button
+                    id="sendButton"
+                    onclick="sendMessage()">
+                    ➤
+                </button>
+
+            </div>
+
+            <div class="input-hint">
+                Press <b>Enter</b> to send •
+                <b>Shift + Enter</b> for a new line
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
